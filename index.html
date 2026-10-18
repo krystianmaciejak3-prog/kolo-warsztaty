@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koło naukowe „Koło” – warsztat HTML</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f3f7fc; color: #122342; line-height: 1.6; }
+    header, footer { background: #142d54; color: white; text-align: center; padding: 26px 16px; }
+    header h1 { margin: 0; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+    section { background: white; padding: 24px; margin-bottom: 22px; border-radius: 12px; box-shadow: 0 3px 12px #102b5514; }
+    h2 { color: #163e73; margin-top: 0; }
+    .plakat { display: block; width: 100%; max-width: 650px; height: auto; margin: 0 auto; }
+    footer p { margin: 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Koło naukowe „Koło”</h1>
+  </header>
+
+  <main>
+    <section id="ogloszenie">
+      <h2>Ogłoszenie Koła Naukowego „Koło”</h2>
+      <h3>Zapraszamy na bezpłatny warsztat HTML dla początkujących!</h3>
+      <p>Podczas 60-minutowych zajęć poznasz podstawy HTML, czyli języka służącego do tworzenia stron internetowych.</p>
+      <p><strong>Na warsztacie zrobisz swoją pierwszą stronę internetową. Dodasz do niej tytuł, tekst i link, który prowadzi do innej strony.</strong></p>
+      <p><strong>Limit:</strong> 16 miejsc<br>
+         <strong>Zapisanych:</strong> 8 osób<br>
+         <strong>Wolnych miejsc:</strong> 8</p>
+      <p><strong>Termin:</strong> do ustalenia<br>
+         <strong>Miejsce:</strong> do ustalenia<br>
+         <strong>Sposób zapisów:</strong> do ustalenia</p>
+      <p><strong>Dołącz do nas!</strong></p>
+    </section>
+
+    <section id="plakat">
+      <h2>Plakat</h2>
+      <img class="plakat" src="plakat.png" alt="Plakat Koła dotyczący bezpłatnych warsztatów Git dla początkujących">
+    </section>
+
+    <section id="tabela">
+      <h2>Tabela</h2>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col">Warsztat</th>
+            <th scope="col">Limit</th>
+            <th scope="col">Zapisy</th>
+            <th scope="col">Wolne miejsca</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Git</td><td>12</td><td>11</td><td>1</td></tr>
+          <tr><td>API</td><td>10</td><td>9</td><td>1</td></tr>
+          <tr><td>HTML</td><td>16</td><td>14</td><td>2</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><th scope="row">Razem</th><td>38</td><td>34</td><td>4</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section id="kalkulator">
+      <h2>Kalkulator</h2>
+      <form id="formularz-kartek" novalidate>
+        <p><label for="uczestnicy">Liczba uczestników (0–16):</label><br>
+        <input id="uczestnicy" type="number" min="0" max="16" step="1" required></p>
+        <p><label for="kartki">Kartki na osobę:</label><br>
+        <input id="kartki" type="number" min="1" step="1" required></p>
+        <button type="submit">Oblicz</button>
+      </form>
+      <p id="wynik" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Koło naukowe „Koło”</p>
+  </footer>
+  <script>
+    const formularz = document.getElementById("formularz-kartek");
+    const wynik = document.getElementById("wynik");
+
+    formularz.addEventListener("submit", function (zdarzenie) {
+      zdarzenie.preventDefault();
+      const tekstUczestnicy = document.getElementById("uczestnicy").value.trim();
+      const tekstKartki = document.getElementById("kartki").value.trim();
+      wynik.textContent = "";
+
+      if (tekstUczestnicy === "" || tekstKartki === "") {
+        wynik.textContent = "Błąd: wypełnij oba pola.";
+        return;
+      }
+
+      const uczestnicy = Number(tekstUczestnicy);
+      const kartki = Number(tekstKartki);
+
+      if (!Number.isInteger(uczestnicy) || uczestnicy < 0 || uczestnicy > 16) {
+        wynik.textContent = "Błąd: liczba uczestników musi być całkowita, od 0 do 16.";
+        return;
+      }
+      if (!Number.isSafeInteger(kartki) || kartki <= 0) {
+        wynik.textContent = "Błąd: kartki na osobę muszą być dodatnią liczbą całkowitą.";
+        return;
+      }
+      if (!Number.isSafeInteger(uczestnicy * kartki)) {
+        wynik.textContent = "Błąd: podana liczba kartek jest zbyt duża.";
+        return;
+      }
+      if (uczestnicy === 0) {
+        wynik.textContent = "Nie trzeba drukować kartek";
+      } else {
+        wynik.textContent = "Do wydrukowania: " + (uczestnicy * kartki) + " kartek.";
+      }
+    });
+  </script>
+</body>
+</html>
