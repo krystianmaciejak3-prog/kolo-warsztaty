@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="t">
+<title id="t">Laptop, kartka ze szkicem strony i ołówek na granatowym tle</title>
+<rect width="800" height="1000" fill="#f6efe2"/>
+<rect x="0" y="0" width="800" height="660" fill="#1f3354"/>
+<circle cx="640" cy="140" r="90" fill="#2c4670"/>
+<rect x="140" y="250" width="420" height="270" rx="16" fill="#f6efe2"/>
+<rect x="165" y="275" width="370" height="220" rx="6" fill="#2c4670"/>
+<rect x="190" y="300" width="200" height="22" rx="4" fill="#f2b84b"/>
+<rect x="190" y="340" width="310" height="12" rx="4" fill="#9fb3d1"/>
+<rect x="190" y="364" width="270" height="12" rx="4" fill="#9fb3d1"/>
+<rect x="190" y="400" width="130" height="70" rx="6" fill="#f6efe2" opacity=".85"/>
+<rect x="340" y="400" width="160" height="70" rx="6" fill="#f6efe2" opacity=".55"/>
+<path d="M100 520h500l-30 40H130z" fill="#d9cfbd"/>
+<g transform="rotate(-8 560 560)">
+<rect x="470" y="430" width="230" height="290" rx="6" fill="#fffdf8" stroke="#d8d0c3" stroke-width="3"/>
+<rect x="500" y="465" width="170" height="26" rx="3" fill="none" stroke="#1f3354" stroke-width="4"/>
+<rect x="500" y="510" width="80" height="80" rx="3" fill="none" stroke="#1f3354" stroke-width="4"/>
+<path d="M600 520h70M600 545h70M600 570h50M500 615h170M500 640h170M500 665h120" stroke="#1f3354" stroke-width="4" stroke-linecap="round"/>
+</g>
+<g transform="rotate(32 660 760)">
+<rect x="560" y="745" width="220" height="30" rx="4" fill="#f2b84b"/>
+<rect x="760" y="745" width="26" height="30" fill="#e58e8e"/>
+<path d="M560 745l-40 15 40 15z" fill="#e8c9a0"/><path d="M533 755l-13 5 13 5z" fill="#29251f"/>
+</g>
+</svg>

@@ -1,120 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Koło naukowe „Koło” – warsztat HTML</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, sans-serif; background: #f3f7fc; color: #122342; line-height: 1.6; }
-    header, footer { background: #142d54; color: white; text-align: center; padding: 26px 16px; }
-    header h1 { margin: 0; }
-    main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
-    section { background: white; padding: 24px; margin-bottom: 22px; border-radius: 12px; box-shadow: 0 3px 12px #102b5514; }
-    h2 { color: #163e73; margin-top: 0; }
-    .plakat { display: block; width: 100%; max-width: 650px; height: auto; margin: 0 auto; }
-    footer p { margin: 0; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koło · Warsztat HTML</title>
+<style>
+  :root { --navy: #1f3354; --cream: #f6efe2; --gold: #f2b84b; --ink: #222; --line: #d8d0c3; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, "Segoe UI", Arial, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+  header { background: var(--navy); color: #fff; padding: 18px 20px; }
+  header strong { font-size: 22px; }
+  header span { opacity: .8; margin-left: 10px; }
+  main { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  .intro { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start; }
+  h1 { font-size: 40px; line-height: 1.15; margin: 10px 0 16px; color: var(--navy); }
+  h2 { color: var(--navy); margin-top: 40px; }
+  .poster { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+  .badge { display: inline-block; background: var(--gold); padding: 2px 10px; border-radius: 99px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; background: #fff; }
+  th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+  td:not(:first-child), th:not(:first-child) { text-align: right; }
+  tfoot td { font-weight: 700; }
+  .calc { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label { display: block; font-weight: 600; margin-bottom: 6px; }
+  input { width: 100%; font-size: 18px; padding: 10px; border: 1px solid var(--line); border-radius: 6px; }
+  button { margin-top: 16px; font-size: 17px; padding: 10px 22px; border: 0; border-radius: 6px; background: var(--navy); color: #fff; cursor: pointer; }
+  #wynik { margin-top: 14px; font-size: 19px; font-weight: 600; }
+  #wynik.blad { color: #a0262c; }
+  tr.ostatnie { background: #fde3c4; }
+  .znacznik { font-size: 13px; font-weight: 700; color: #8a4b08; margin-left: 8px; }
+  footer { text-align: center; font-size: 14px; color: #555; padding: 20px; border-top: 1px solid var(--line); }
+  @media (max-width: 700px) { .intro, .fields { grid-template-columns: 1fr; } h1 { font-size: 32px; } }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Koło naukowe „Koło”</h1>
-  </header>
+<header><strong>Koło</strong><span>koło naukowe: warsztaty dla początkujących</span></header>
+<main>
+  <section class="intro">
+    <div>
+      <p class="badge">Bezpłatnie · 60 minut</p>
+      <h1>Warsztat HTML: zbuduj swoją pierwszą stronę</h1>
+      <p>Chcesz zobaczyć, jak powstaje strona internetowa? Na bezpłatnym warsztacie Koła w 60 minut stworzysz pierwszą stronę z nagłówkiem, akapitem i linkiem. Nie musisz nic umieć. Wystarczy komputer z przeglądarką.</p>
+      <p><strong>Limit:</strong> 16 osób. <strong>Termin, miejsce i sposób zapisów:</strong> do ustalenia.</p>
+    </div>
+    <img class="poster" src="plakat.svg" alt="Plakat warsztatu: laptop, kartka ze szkicem strony i ołówek na granatowym tle">
+  </section>
 
-  <main>
-    <section id="ogloszenie">
-      <h2>Ogłoszenie Koła Naukowego „Koło”</h2>
-      <h3>Zapraszamy na bezpłatny warsztat HTML dla początkujących!</h3>
-      <p>Podczas 60-minutowych zajęć poznasz podstawy HTML, czyli języka służącego do tworzenia stron internetowych.</p>
-      <p><strong>Na warsztacie zrobisz swoją pierwszą stronę internetową. Dodasz do niej tytuł, tekst i link, który prowadzi do innej strony.</strong></p>
-      <p><strong>Limit:</strong> 16 miejsc<br>
-         <strong>Zapisanych:</strong> 8 osób<br>
-         <strong>Wolnych miejsc:</strong> 8</p>
-      <p><strong>Termin:</strong> do ustalenia<br>
-         <strong>Miejsce:</strong> do ustalenia<br>
-         <strong>Sposób zapisów:</strong> do ustalenia</p>
-      <p><strong>Dołącz do nas!</strong></p>
-    </section>
+  <h2>Wolne miejsca</h2>
+  <table>
+    <thead><tr><th>Warsztat</th><th>Limit</th><th>Zapisy</th><th>Wolne miejsca</th></tr></thead>
+    <tbody id="warsztaty-wiersze"></tbody>
+    <tfoot id="warsztaty-razem"></tfoot>
+  </table>
 
-    <section id="plakat">
-      <h2>Plakat</h2>
-      <img class="plakat" src="plakat kola1.png" alt="Plakat Koła dotyczący bezpłatnych warsztatów Git dla początkujących">
-    </section>
+  <h2>Ile kartek wydrukować?</h2>
+  <div class="calc">
+    <div class="fields">
+      <div><label for="uczestnicy">Liczba uczestników (0–16)</label><input id="uczestnicy" type="number" min="0" max="16" step="1" value="8"></div>
+      <div><label for="kartki">Kartki na osobę</label><input id="kartki" type="number" min="1" step="1" value="2"></div>
+    </div>
+    <button id="oblicz">Oblicz</button>
+    <p id="wynik" role="status"></p>
+  </div>
+</main>
+<footer>Koło jest fikcyjne. Strona powstała z pomocą AI na kursie Praktyczne AI w IT. Autor: [Twoje imię lub nick].</footer>
+<script src="warsztaty.js"></script>
+<script src="kalkulator.js"></script>
+<script>
+  wyswietlWarsztaty();
 
-    <section id="tabela">
-      <h2>Tabela</h2>
-      <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-          <tr>
-            <th scope="col">Warsztat</th>
-            <th scope="col">Limit</th>
-            <th scope="col">Zapisy</th>
-            <th scope="col">Wolne miejsca</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Git</td><td>12</td><td>11</td><td>1</td></tr>
-          <tr><td>API</td><td>10</td><td>9</td><td>1</td></tr>
-          <tr><td>HTML</td><td>16</td><td>14</td><td>2</td></tr>
-        </tbody>
-        <tfoot>
-          <tr><th scope="row">Razem</th><td>38</td><td>34</td><td>4</td></tr>
-        </tfoot>
-      </table>
-    </section>
-
-    <section id="kalkulator">
-      <h2>Kalkulator</h2>
-      <form id="formularz-kartek" novalidate>
-        <p><label for="uczestnicy">Liczba uczestników (0–16):</label><br>
-        <input id="uczestnicy" type="number" min="0" max="16" step="1" required></p>
-        <p><label for="kartki">Kartki na osobę:</label><br>
-        <input id="kartki" type="number" min="1" step="1" required></p>
-        <button type="submit">Oblicz</button>
-      </form>
-      <p id="wynik" role="status" aria-live="polite"></p>
-    </section>
-  </main>
-
-  <footer>
-    <p>Koło naukowe „Koło”</p>
-  </footer>
-  <script>
-    const formularz = document.getElementById("formularz-kartek");
-    const wynik = document.getElementById("wynik");
-
-    formularz.addEventListener("submit", function (zdarzenie) {
-      zdarzenie.preventDefault();
-      const tekstUczestnicy = document.getElementById("uczestnicy").value.trim();
-      const tekstKartki = document.getElementById("kartki").value.trim();
-      wynik.textContent = "";
-
-      if (tekstUczestnicy === "" || tekstKartki === "") {
-        wynik.textContent = "Błąd: wypełnij oba pola.";
-        return;
-      }
-
-      const uczestnicy = Number(tekstUczestnicy);
-      const kartki = Number(tekstKartki);
-
-      if (!Number.isInteger(uczestnicy) || uczestnicy < 0 || uczestnicy > 16) {
-        wynik.textContent = "Błąd: liczba uczestników musi być całkowita, od 0 do 16.";
-        return;
-      }
-      if (!Number.isSafeInteger(kartki) || kartki <= 0) {
-        wynik.textContent = "Błąd: kartki na osobę muszą być dodatnią liczbą całkowitą.";
-        return;
-      }
-      if (!Number.isSafeInteger(uczestnicy * kartki)) {
-        wynik.textContent = "Błąd: podana liczba kartek jest zbyt duża.";
-        return;
-      }
-      if (uczestnicy === 0) {
-        wynik.textContent = "Nie trzeba drukować kartek";
-      } else {
-        wynik.textContent = "Do wydrukowania: " + (uczestnicy * kartki) + " kartek.";
-      }
-    });
-  </script>
+  document.getElementById('oblicz').addEventListener('click', function () {
+    const wynik = document.getElementById('wynik');
+    const komunikat = policzKartki(document.getElementById('uczestnicy').value, document.getElementById('kartki').value);
+    wynik.className = komunikat.startsWith('Podaj') ? 'blad' : '';
+    wynik.textContent = komunikat;
+  });
+</script>
 </body>
 </html>

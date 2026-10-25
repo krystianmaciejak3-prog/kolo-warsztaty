@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Testy kalkulatora i warsztatów</title>
+<style>
+  body { font-family: system-ui, "Segoe UI", Arial, sans-serif; margin: 30px; line-height: 1.5; }
+  #podsumowanie { font-size: 22px; font-weight: 700; }
+  li { margin: 6px 0; }
+  .ok { color: #1d7a3a; }
+  .zle { color: #b3261e; font-weight: 600; }
+</style>
+</head>
+<body>
+<h1>Testy kalkulatora i warsztatów</h1>
+<p id="podsumowanie"></p>
+<ul id="wyniki"></ul>
+<!-- Ukryta tabela do testowania renderowania warsztatów. -->
+<table hidden>
+  <tbody id="warsztaty-wiersze"></tbody>
+  <tfoot id="warsztaty-razem"></tfoot>
+</table>
+<script src="kalkulator.js"></script>
+<script src="warsztaty.js"></script>
+<script>
+  const wyniki = document.getElementById('wyniki');
+  let zaliczone = 0;
+  let wszystkie = 0;
+
+  // Porównuje wynik funkcji z oczekiwanym tekstem i dopisuje wiersz do listy.
+  function sprawdz(opis, otrzymane, oczekiwane) {
+    wszystkie++;
+    const ok = otrzymane === oczekiwane;
+    if (ok) zaliczone++;
+    const li = document.createElement('li');
+    li.className = ok ? 'ok' : 'zle';
+    li.textContent = (ok ? '✔ ' : '✘ ') + opis +
+      (ok ? '' : ' — otrzymano: „' + otrzymane + '”, oczekiwano: „' + oczekiwane + '”');
+    wyniki.appendChild(li);
+  }
+
+  if (typeof policzKartki !== 'function') {
+    document.getElementById('podsumowanie').textContent = 'Nie znaleziono funkcji policzKartki. Sprawdź, czy plik kalkulator.js leży obok tego pliku.';
+    throw new Error('Brak funkcji policzKartki');
+  }
+
+  sprawdz('8 uczestników po 2 kartki', policzKartki('8', '2'), 'Potrzebujemy 16 kartek.');
+  sprawdz('0 uczestników', policzKartki('0', '2'), 'Nie trzeba drukować kartek.');
+  sprawdz('16 uczestników (górna granica)', policzKartki('16', '1'), 'Potrzebujemy 16 kartek.');
+  sprawdz('17 uczestników (za dużo)', policzKartki('17', '2'), 'Podaj od 0 do 16 uczestników i dodatnią całkowitą liczbę kartek na osobę.');
+  sprawdz('ułamek uczestników', policzKartki('2.5', '2'), 'Podaj od 0 do 16 uczestników i dodatnią całkowitą liczbę kartek na osobę.');
+  sprawdz('puste pole uczestników', policzKartki('', '2'), 'Podaj od 0 do 16 uczestników i dodatnią całkowitą liczbę kartek na osobę.');
+  sprawdz('0 kartek na osobę', policzKartki('5', '0'), 'Podaj od 0 do 16 uczestników i dodatnią całkowitą liczbę kartek na osobę.');
+  sprawdz('ujemna liczba uczestników', policzKartki('-1', '2'), 'Podaj od 0 do 16 uczestników i dodatnią całkowitą liczbę kartek na osobę.');
+
+  sprawdz('12 miejsc, 11 zapisów — 1 wolne miejsce', wolneMiejscaLiczba(12, 11), 1);
+  sprawdz('16 miejsc, 14 zapisów — 2 wolne miejsca', wolneMiejscaLiczba(16, 14), 2);
+  sprawdz('10 miejsc, 10 zapisów — brak wolnych miejsc', wolneMiejscaLiczba(10, 10), 0);
+
+  wyswietlWarsztaty();
+  const razem = document.getElementById('warsztaty-razem').rows[0];
+  sprawdz('Razem: limit 52', razem.cells[1].textContent, '52');
+  sprawdz('Razem: zapisy 46', razem.cells[2].textContent, '46');
+  sprawdz('Razem: wolne miejsca 6', razem.cells[3].textContent, '6');
+
+  const wiersze = document.getElementById('warsztaty-wiersze').rows;
+  for (let i = 0; i < wiersze.length; i++) {
+    const nazwa = warsztaty[i].nazwa;
+    const oczekiwaneOznaczenie = i < 2;
+    sprawdz(nazwa + ': wyróżnienie wiersza', wiersze[i].classList.contains('ostatnie'), oczekiwaneOznaczenie);
+    const znacznik = wiersze[i].querySelector('.znacznik');
+    sprawdz(nazwa + ': tekst oznaczenia', znacznik ? znacznik.textContent : '', oczekiwaneOznaczenie ? 'ostatnie miejsce' : '');
+  }
+
+  document.getElementById('podsumowanie').textContent = 'Zaliczone: ' + zaliczone + ' z ' + wszystkie;
+</script>
+</body>
+</html>
