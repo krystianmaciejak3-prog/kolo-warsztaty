@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Testy: NAZWA_FUNKCJI</title>
+<style>
+  body { font-family: system-ui, "Segoe UI", Arial, sans-serif; margin: 30px; line-height: 1.5; }
+  #podsumowanie { font-size: 22px; font-weight: 700; }
+  li { margin: 6px 0; }
+  .ok { color: #1d7a3a; }
+  .zle { color: #b3261e; font-weight: 600; }
+</style>
+</head>
+<body>
+<h1>Testy: NAZWA_FUNKCJI</h1>
+<p id="podsumowanie"></p>
+<ul id="wyniki"></ul>
+<script src="plik.js"></script>
+<script>
+  const wyniki = document.getElementById('wyniki');
+  let zaliczone = 0;
+  let wszystkie = 0;
+
+  // Porównuje wynik funkcji z oczekiwanym tekstem i dopisuje wiersz do listy.
+  function sprawdz(opis, otrzymane, oczekiwane) {
+    wszystkie++;
+    const ok = otrzymane === oczekiwane;
+    if (ok) zaliczone++;
+    const li = document.createElement('li');
+    li.className = ok ? 'ok' : 'zle';
+    li.textContent = (ok ? '✔ ' : '✘ ') + opis +
+      (ok ? '' : ' — otrzymano: „' + otrzymane + '”, oczekiwano: „' + oczekiwane + '”');
+    wyniki.appendChild(li);
+  }
+
+  if (typeof NAZWA_FUNKCJI !== 'function') {
+    document.getElementById('podsumowanie').textContent = 'Nie znaleziono funkcji NAZWA_FUNKCJI. Sprawdź, czy plik plik.js leży obok tego pliku.';
+    throw new Error('Brak funkcji NAZWA_FUNKCJI');
+  }
+
+  // Przykład: sprawdz('opis przypadku', NAZWA_FUNKCJI('dane'), 'oczekiwany wynik');
+
+
+  document.getElementById('podsumowanie').textContent = 'Zaliczone: ' + zaliczone + ' z ' + wszystkie;
+</script>
+</body>
+</html>
