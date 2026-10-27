@@ -52,3 +52,19 @@ Testy można uruchomić, otwierając plik `testy.html` w przeglądarce.
 HTML, CSS, JavaScript, Visual Studio Code, Codex i GitHub.
 
 Projekt nie wymaga dodatkowych bibliotek JavaScript.
+## Testy kalkulatora Node.js
+
+Przygotowano 9 testów automatycznych kalkulatora.
+
+Uruchamianie testów:
+node --test kalkulator.test.js
+
+Wynik: 9 zaliczonych, 0 błędów.
+
+Przegląd jakości:
+Wykryto problem z polem uczestników zawierającym same spacje. Kalkulator błędnie interpretował takie dane jako 0 uczestników.
+
+Naprawa:
+Dodano sprawdzanie pustych pól i samych spacji za pomocą trim(). Najpierw test wykazał błąd, a po poprawce wszystkie 9 testów przeszło.
+
+Sprawdzono także, że test wykrywa celową zmianę limitu uczestników z 16 na 20. Po teście przywrócono limit 16.
