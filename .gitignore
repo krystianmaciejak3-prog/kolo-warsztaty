@@ -1,0 +1,19 @@
+# Klucze API i hasła
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# Zaleznosci Node.js
+node_modules/
+
+# Pliki tymczasowe i logi
+*.log
+.DS_Store
+Thumbs.db
+
+# Pliki lokalne
+.vscode/

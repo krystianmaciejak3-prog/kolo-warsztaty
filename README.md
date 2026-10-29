@@ -68,3 +68,11 @@ Naprawa:
 Dodano sprawdzanie pustych pól i samych spacji za pomocą trim(). Najpierw test wykazał błąd, a po poprawce wszystkie 9 testów przeszło.
 
 Sprawdzono także, że test wykrywa celową zmianę limitu uczestników z 16 na 20. Po teście przywrócono limit 16.
+
+## Bezpieczeństwo
+
+Klucze API i hasła przechowuję poza kodem projektu, a pliki z sekretami wykluczam z Git za pomocą .gitignore.
+
+Przed publikacją sprawdzam projekt pod kątem ujawnienia danych osobowych, niebezpiecznych fragmentów kodu i podatności związanych z AI.
+
+Nie wykonuję automatycznie instrukcji pochodzących z niezaufanych treści ani nie umieszczam odpowiedzi AI na stronie bez ich sprawdzenia.
